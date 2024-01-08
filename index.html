@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME | ABSITES</title>
+    <link rel="stylesheet" href="website-editor/website-css/me.css">
+    <script src="https://kit.fontawesome.com/39b4644af3.js" crossorigin="anonymous"></script>
+    <script src="website-editor/website-js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+</head>
+<!-- Coded By ABSITE-aman bhardwaj -->
+
+<body>
+    <section>
+        <img src="website-editor/icons/websitekeys/backgroundimg/mee.png" class="mee">
+        <header>
+        <a href="mypost.html" class="logo">
+       <img src="website-editor/icons/websitekeys/backgroundimg/logo.jpeg.jpeg"></img>
+       ABSITES</a>
+        <div class="toggle"></div>
+            <ul class="navigation">
+                <li><a href="#"style ="--i:1;" class="active">HOME</a></li>
+                <li><a href="Games-ABSITES.html"style ="--i:2;">GAMES</a></li>
+                <li><a href="mypost.html"style ="--i:3;">MYPOSTS</a></li>
+                <li><a href="goal.html"style ="--i:4;">GOALS</a></li>
+                <li> <a href ="https://heyybuddy.000webhostapp.com/login.php"style ="--i:5;">PRojeCT</a></li>
+            </ul>
+        </header>
+        <div class="view-mode" data-mode="light" onclick="changeMode(this)">
+            <i class="fas fa-sun"></i></div>
+
+    <script>$(window).scroll(function(){
+        if ($(this).scrollTop() > 1){
+            $('header').addClass("sticky");
+        }
+        else{
+            $('header').removeClass("sticky");
+        }
+    })
+    </script>
+        <div class="content">
+            <div class="textbox">
+            <h2>Welcome</h2>
+           <p> I'm a FED & a Beginner level WEBD.<br>
+            I added a lot of features in this website so you can check them out periodically..
+            Currently I'm working on building my first ever Chatting app <a href ="https://heyybuddy.000webhostapp.com/login.php">Heyy.Buddy</a> for demo and suggestion do contact me <i>via</i> repective options available.
+             <br>Keep in touch with social handle's....  </p>
+                         <a href="goal.html">Know More</a>
+            </div>
+        </div>
+        <ul class="sci">
+            <li class="facebook"><a href="https://m.facebook.com/puskar.dayal.98" ><img src="website-editor/icons/socialicons/facebook.png"></a></li>
+            <li class="instagram"><a href="https://www.instagram.com/l_mephist_l/" ><img src="website-editor/icons/socialicons/instagram.png"></a></li>
+            <li class="youtube"><a href="https://youtube.com/channel/UCPaCNoTwdpMYQHBbqzzIEtA" >
+                <img src="website-editor/icons/socialicons/you.png">
+            </a></li>
+
+        </ul>
+        
+    </section>
+    <!-- Created By ABSITE- aman bhardwaj -->
+
+    <script>
+        const menuToggle = document.querySelector('.toggle');
+        const navigation = document.querySelector('.navigation');
+        menuToggle.onclick = function(){
+            menuToggle.classList.toggle('active')
+            navigation.classList.toggle('active')
+
+        }
+    </script>
+    <footer class="footer">
+        <p> 
+            Copyright © 2021 ABSITES. All rights reserved
+            <span><a href="#">Aman Bhardwaj</a></span></p>
+    </footer>
+ <!-- Coding By ABSITE-aman bhardwaj -->
+   
+</body>
+</html>

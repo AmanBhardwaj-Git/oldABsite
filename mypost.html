@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MYPOSTS | ABSITES</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <link rel="stylesheet" href="mypost/jquery.flipster.min.css">
+
+
+  <script src="https://kit.fontawesome.com/39b4644af3.js" crossorigin="anonymous"></script>
+
+    <style>
+      *{	padding: 0;	margin: 0;	box-sizing: border-box;}
+
+      body {
+font-size: 12px;
+font-family: 'Montserrat',
+sans-serif;
+scroll-behavior: smooth;
+}
+a {	text-decoration: none;}
+.container
+{	min-height: 100vh;	width: 100%;	display: flex;	align-items: center;	justify-content: center;}
+
+img {	height: 100%;	width: 100%;	object-fit: cover;}
+p {	color: var(--font-color);	font-size: 1.4rem;	margin-top: 5px;	line-height: 2.5rem;	font-weight: 300;	letter-spacing: .05rem;}
+.section-title {	font-size: 4rem;	font-weight: 300;
+  	color: var(--font-color);	margin-bottom: 10px;	text-transform: uppercase;	letter-spacing: .2rem;	text-align: center;}
+.section-title span {	color: var(--color);}
+:root{
+ --body-color:rgb(244, 247, 230);
+ --font-color:#000;
+ --color: crimson ;
+ --primary-color:#000;
+ --secondary-color: rgba(13, 228, 13, 0.795);
+ --tertiary-color:rgba(82, 179, 179, 0.768);
+ --fontss-color:#000;
+ --back-color:rgb(255, 214, 214);
+ --colors: rgba(13, 228, 13, 0.795);
+ --boy-color:rgb(182, 135, 135);
+ --girl-color:rgb(224, 42, 78);
+ --colod: rgb(252, 248, 249) ;
+
+
+
+}
+[data-theme=dark] {
+--body-color: #000;
+--font-color:rgb(146, 141, 141);
+--color: rgba(13, 228, 13, 0.795);
+--primary-color:rgb(167, 60, 11);
+--secondary-color: yellow ;
+--tertiary-color:crimson;
+--fontss-color: rgb(24, 23, 23);
+--back-color:rgb(97, 94, 94);
+--colors: rgb(184, 47, 74) ;
+--boy-color:rgba(119, 209, 119, 0.795);
+--girl-color:rgba(49, 194, 49, 0.795);
+--colod: rgb(19, 24, 18) ;
+
+}
+
+
+#paper-back {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.856);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  font-size: 30px;
+}
+#paper-back nav {
+  padding: 120px 34px;
+}
+#paper-back nav a {
+  display: block;
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: rgba(13, 228, 13, 0.795);
+}
+#paper-back nav a:hover {
+  color: crimson;
+}
+#paper-back nav .icons {
+  display: block;
+  position: fixed;
+  bottom: 70px;
+  right: 10rem;
+  width: 65px;
+
+  text-decoration: none;
+  color: rgba(13, 228, 13, 0.795);
+}
+#paper-back nav .icons a:hover {
+  color: crimson;
+
+}
+
+
+
+
+#paper-window {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  z-index: 2;
+}
+
+#paper-window.tilt {
+  overflow: hidden;
+  pointer-events: none;
+}
+#paper-window.tilt #paper-front {
+  transform: rotate(9deg) translateZ(0);
+}
+
+#paper-front {
+  pointer-events: auto;
+  position: relative;
+  z-index: 3;
+  background: var(--body-color);
+  box-shadow: 0 0 30px rgba(0, 0, 1, 0.959);
+  transform-origin: center 70%;
+  transition: all 0.3s ease;
+  background-repeat:repeat-y;}
+
+ 
+.hamburger {
+  position: fixed;
+  z-index: 4;
+  top: 30px;
+  left: 30px;
+  width: 45px;
+  height: 34px;
+  cursor: pointer;
+  user-select: none;
+}
+.hamburger span {
+  position: relative;
+}
+.hamburger span, .hamburger span:before, .hamburger span:after {
+  display: block;
+  width: 45px;
+  height: 8px;
+  background-color: var(--font-color);
+  border-radius: 20%;
+  box-shadow: 0px 0px 10px 1px var(--color);
+
+
+}
+.hamburger span:before, .hamburger span:after {
+  content: '';
+  position: absolute;
+}
+.hamburger span:before {
+  bottom: -14px;
+}
+.hamburger span:after {
+  bottom: -28px;
+}
+.close {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  width: 45px;
+  height: 34px;
+  cursor: pointer;
+}
+.close:before, .close:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 45px;
+  height: 6px;
+  top: 50%;
+  background-color: rgb(193, 204, 38);
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 1px rgba(230, 164, 22, 0.768);
+
+}
+.close:before {
+  transform: translateY(-50%) rotate(45deg);
+}
+.close:after {
+  transform: translateY(-50%) rotate(-45deg);
+}
+.close2 {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 34px;
+  cursor: pointer;
+}
+.close2:before, .close2:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 45px;
+  height: 6px;
+  top: 50%;
+  background-color:rgb(193, 204, 38);
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 1px rgba(230, 164, 22, 0.768);
+
+}
+.close2:before {
+  transform: translateY(50%) rotate(-45deg);
+}
+.close2:after {
+  transform: translateY(50%) rotate(45deg);
+}
+
+
+#projects .projects 
+{	flex-direction: column;
+  	max-width: 900px;
+  	margin: 0 auto;
+}
+   #projects .projects-header
+{
+  font-size: 6rem;
+  font-weight:bolder;
+  padding: 30px 0 10px 10px;
+  margin: 0 auto;
+
+}
+  #projects .banner{
+    width: 100%;
+    height: 900px;
+    background-color: var(--body-color);
+    overflow: hidden;
+}
+
+  #projects .banner .carousel{
+    width: 300px;
+    margin: 50px auto 0;
+    overflow: visible;
+}
+
+  #projects .carousel img{
+    border-radius: 20%;
+    -webkit-box-reflect: below 10px linear-gradient(rgba(255,255,255, 0.1), rgba(255,255,255, 0.3));
+}
+  /* created by ABSITE-aman bhardwaj */ 
+
+  /* End Projects section */ 
+  /* About Section */
+
+			  /* contact Section */
+        #contact .contact
+         {	flex-direction: column;	max-width: 1200px;	margin: 0px auto; padding-top: 10px; padding-bottom: 0px;}
+			  #contact .contact-items 
+        {	width: 400px;}
+        #contact .contact-item 
+        {	width: 80%;	padding: 20px;	text-align: center;	border-radius: 10px;	padding: 30px;	margin: 30px;	display: flex;	justify-content: center;	align-items: center;	flex-direction: column; 
+          background: var(--back-color);
+          	box-shadow: 0px 0px 18px 0 #0000008a;	transition: .3s ease box-shadow;}
+        #contact .contact-item:hover {	
+          box-shadow: 0px 0px 12px 2px var(--color);
+        }
+        #contact .icon {	width: 70px;	margin: 0 auto;	margin-bottom: 10px;}
+        #contact .contact-info h1 {	font-size: 2.5rem;	font-weight: 500;	margin-bottom: 5px;}
+        #contact .contact-info h2 {	font-size: 1.3rem;	line-height: 2rem;	font-weight: 500;}
+        /*End contact Section */ 
+        /*End contact Section */ 
+
+        @media only screen and (min-width: 768px) {
+          /* Project */
+          	#projects .project-item {		flex-direction: row;	}
+          	#projects .project-item:nth-child(even) {		flex-direction: row-reverse;	}
+            	#projects .project-item {		height: 400px;		margin: 0;		width: 100%;		border-radius: 0;	}
+
+				#contact .contact 
+        {		flex-direction: column;		padding: 10px 0;		align-items: center;		justify-content: center;		min-width: 20vh;	}
+        	#contact .contact-items {		width: 100%;		display: flex;		flex-direction: row;		justify-content: space-evenly;		margin: 0;	}
+          	#contact .contact-item {		width: 30%;		margin: 0;		flex-direction: row;	}
+            	#contact .contact-item .icon {		height: 100px;		width: 100px;	}
+              	#contact .contact-item .icon img {		object-fit: contain;	}
+                	#contact .contact-item .contact-info {		width: 100%;		text-align: left;		padding-left: 20px;	}	/* End contact */}
+        @media only screen and (min-width: 768px) {	
+				#contact .contact {		flex-direction: column;		padding: 50px 0;		align-items: center;		justify-content: center;		min-width: 20vh;	}
+        	#contact .contact-items {		width: 100%;		display: flex;		flex-direction: row;		justify-content: space-evenly;		margin: 0;	}
+          	#contact .contact-item {		width: 30%;		margin: 0;		flex-direction: row;	}
+            	#contact .contact-item .icon {		height: 100px;		width: 100px;	}
+              	#contact .contact-item .icon img {		object-fit: contain;	}
+                	#contact .contact-item .contact-info {		width: 100%;		text-align: left;		padding-left: 20px;	}	/* End contact */}
+
+
+
+    			  /* Footer */
+      #footer {	background:var(--fontss-color); }
+      #footer .footer {	min-height: 20px;	flex-direction: column;	padding-top: 50px;	padding-bottom: 10px;}
+      #footer h1 {	color: white;	font-weight: 500;	font-size: 3rem;	letter-spacing: .1rem;	margin-top: 6px;	margin-bottom: 10px;}
+      #footer h1 span{	color: var(--color);	font-weight: 500;	font-size: 3rem;	letter-spacing: .1rem;	margin-top: 6px;	margin-bottom: 10px;}
+
+      #footer .social-icon {	display: flex;	margin-bottom: 30px;}
+    	#footer .social-item {	height: 100px;	width: 100px;	margin: 0 5px;}
+			#footer .social-item img {	filter: grayscale(1);	transition: .3s ease filter;}
+			#footer .social-item:hover img {	filter: grayscale(0);}
+			#footer p {	color: var(--color);	font-size: 2rem;}
+			/* End Footer */ 
+
+      .view-mode
+{
+    z-index: 111111111;
+    position: fixed;
+    bottom: 4rem;
+    right: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.768);
+    box-shadow:0 0 15px var(--colors);
+}
+.view-mode:hover
+{
+    cursor: pointer;
+}
+.view-mode i
+{
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+
+}
+
+    
+    </style>
+</head>
+<body>
+    <div id="paper-back">
+	<nav>
+		<div class="close"></div>
+		<a href="index.html">HOME</a>
+		<a href="goal.html">GOALS</a>
+    <a href="Games-ABSITES.html">  GAMES</a>
+		<a href="#contact">CONTACT</a>
+    <div class="close2"></div>
+    <div class="icons">
+      <a href="index.html">  HOME</a>
+      <a href="goal.html">  GOALS</a>
+      <a href="Games-ABSITES.html">  GAMES</a>
+      <a href="#contact">CONTACT</a>
+  
+    </div>
+
+	</nav>
+</div>
+<div id="paper-window">
+	<div id="paper-front">
+		<div class="hamburger"><span></span></div>
+		<div id="container">
+			 
+			<!-- Created By ABSITE- aman bhardwaj -->
+
+
+      <section id="projects">
+           <div class="projects-header">
+              <h1 class="section-title"> MY<span>post</span></h1>
+             </div>
+             <div class="banner">
+              <div class="carousel">
+                  <ul>
+                      <li>
+                          <img src="mypost/images/img1.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img2.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img3.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img4.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img5.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img6.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img7.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img8.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img9.jpg" alt="">
+                      </li>
+                      <li>
+                        <img src="mypost/images/img10.jpg" alt="">
+                      </li>
+                  </ul>
+              </div>
+          </div>
+       </section>
+
+            <section id="contact"> <a href="contact"></a>
+              <div class="contact container">
+                   <div><h1 class="section-title">Con<span>tacts</span></h1></div> 
+                   <div class="contact-items">
+
+                      <div class="contact-item">
+                        <div class="icon">
+                            <img src="https://img.icons8.com/bubbles/100/000000/phone.png"/></div> 
+                            <div class="contact-info"> <h1>Phone</h1> <h3>+1 234 123 1234</h3>
+                              <h3>+1 234 123 1234</h3> </div> </div>
+                               
+                            
+                              <div class="contact-item">
+                                <div class="icon">
+                                    <img src="https://img.icons8.com/bubbles/100/000000/gmail.png"/></div> 
+                                    <div class="contact-info"> <h1>Gmail</h1> <h3>dayalpuskar@</h3>
+                                      <h3>dayalbhardwaj10@</h3> </div> </div>
+        
+
+                              <div class="contact-item"> 
+                                <div class="icon">
+                                  <img src="https://img.icons8.com/bubbles/100/000000/map-marker.png"/></div>
+                                   <div class="contact-info"> <h1>Address</h1> <h3>Patna, Bihar, India</h3> </div> </div> </div>
+                                  </div> 
+                                  
+                                  </section> <!-- End Contact Section -->
+      
+        </div>
+      </div>
+      <section id="footer"> <div class="footer container">
+        <div class="brand"><h1><span>AB</span>SITES </h1></div>
+    <div class="social-icon"> <div class="social-item">
+        <a href="https://m.facebook.com/puskar.dayal.98" >  
+          <img src="https://img.icons8.com/clouds/100/000000/facebook-circled.png"/>                      </a> </div>
+          <div class="social-item">
+            <a href="https://www.instagram.com/hey_normiee/" >  
+              <img src="https://img.icons8.com/clouds/100/000000/instagram-new--v2.png"/>                    </a> </div>
+               <div class="social-item"> 
+                <a href="https://youtube.com/channel/UCPaCNoTwdpMYQHBbqzzIEtA" >  
+
+                  <img src="https://img.icons8.com/clouds/100/000000/youtube-squared.png"/>                                               </a> </div></div>             
+                  <p>Copyright © 2021 ABSITES. All rights reserved</p>
+             </div> </section>
+
+             <div class="view-mode" data-mode="light" onclick="changeMode(this)">
+              <i class="fas fa-sun"></i></div>
+  
+        <!-- Created By ABSITE- aman bhardwaj -->
+
+  
+	
+<script>
+    var paperMenu = {
+	$window: $('#paper-window'),
+	$paperFront: $('#paper-front'),
+	$hamburger: $('.hamburger'),
+	offset: 1800,
+	pageHeight: $('#paper-front').outerHeight(),
+	
+	open: function() {
+		this.$window.addClass('tilt');
+		this.$hamburger.off('click');
+		$('#container, .hamburger').on('click', this.close.bind(this));
+		this.hamburgerFix(true);
+		console.log('opening...');
+	},
+	close: function() {
+		this.$window.removeClass('tilt'); 
+		$('#container, .hamburger').off('click');
+		this.$hamburger.on('click', this.open.bind(this));
+		this.hamburgerFix(false);
+		console.log('closing...');
+	},
+	updateTransformOrigin: function() {
+		scrollTop = this.$window.scrollTop();
+		equation = (scrollTop + this.offset) / this.pageHeight * 100;
+		this.$paperFront.css('transform-origin', 'center ' + equation + '%');
+	},
+	//hamburger icon fix to keep its position
+	hamburgerFix: function(opening) {
+			if(opening) {
+				$('.hamburger').css({
+					position: 'absolute',
+					top: this.$window.scrollTop() + 30 + 'px'
+				});
+			} else {
+				setTimeout(function() {
+					$('.hamburger').css({
+						position: 'fixed',
+						top: '30px'
+					});
+				}, 300);
+			}
+		},
+	bindEvents: function() {
+		this.$hamburger.on('click', this.open.bind(this));
+		$('.close').on('click', this.close.bind(this));
+		this.$window.on('scroll', this.updateTransformOrigin.bind(this));
+	},
+	init: function() {
+		this.bindEvents();
+		this.updateTransformOrigin();
+	},
+};
+
+paperMenu.init();
+    
+    
+</script>
+
+
+<script>
+  var paperMenu = {
+$window: $('#paper-window'),
+$paperFront: $('#paper-front'),
+$hamburger: $('.hamburger'),
+offset: 1800,
+pageHeight: $('#paper-front').outerHeight(),
+
+open: function() {
+  this.$window.addClass('tilt');
+  this.$hamburger.off('click');
+  $('#container, .hamburger').on('click', this.close.bind(this));
+  this.hamburgerFix(true);
+  console.log('opening...');
+},
+close2: function() {
+  this.$window.removeClass('tilt'); 
+  $('#container, .hamburger').off('click');
+  this.$hamburger.on('click', this.open.bind(this));
+  this.hamburgerFix(false);
+  console.log('closing...');
+},
+updateTransformOrigin: function() {
+  scrollTop = this.$window.scrollTop();
+  equation = (scrollTop + this.offset) / this.pageHeight * 100;
+  this.$paperFront.css('transform-origin', 'center ' + equation + '%');
+},
+//hamburger icon fix to keep its position
+hamburgerFix: function(opening) {
+    if(opening) {
+      $('.hamburger').css({
+        position: 'absolute',
+        top: this.$window.scrollTop() + 30 + 'px'
+      });
+    } else {
+      setTimeout(function() {
+        $('.hamburger').css({
+          position: 'fixed',
+          top: '30px'
+        });
+      }, 300);
+    }
+  },
+bindEvents: function() {
+  this.$hamburger.on('click', this.open.bind(this));
+  $('.close2').on('click', this.close2.bind(this));
+  this.$window.on('scroll', this.updateTransformOrigin.bind(this));
+},
+init: function() {
+  this.bindEvents();
+  this.updateTransformOrigin();
+},
+};
+
+paperMenu.init();
+  
+  
+</script>
+<script>
+  function changeMode(themeobj) {
+   if(themeobj.dataset.mode =="light") {
+       document.documentElement.setAttribute("data-theme", "dark");
+       themeobj.dataset.mode = "dark";
+   } else {
+       document.documentElement.setAttribute("data-theme", "light");
+       themeobj.dataset.mode = "light";
+
+
+   }
+}
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="mypost/jquery.flipster.min.js"></script>
+<script>
+  $('.carousel').flipster({
+      style:'carousel',
+      spacing:-0.3,
+  });
+</script>
+
+<!-- Created By ABSITE- aman bhardwaj -->
+
+</body>
+</html>
